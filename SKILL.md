@@ -134,5 +134,13 @@ link, with these columns:
 
   Item · Date · Link · What it is · Bucket · Lane(s) · Verdict · Where it landed · Dependencies
 
+**How to write the Item title:** make it *guiding* — say what the thing DOES (its
+capability/purpose), NOT just the name of the article, repo, or author. Lead with
+the function; put the proper name in parentheses only if useful. E.g.
+"Pulls full YouTube transcripts, no API key (youtube-transcript-api)" — not
+"youtube-transcript-api"; "Turns a messy thread into a clean doc (ThreadReader)" —
+not the author's handle. Someone scanning the log should know what each row is for
+without opening the link.
+
 Claude (any session) and the founder both write to this database — it is the single
 source of truth. Never start a second log.
