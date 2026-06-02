@@ -74,10 +74,13 @@ Tie the framing to business (Gray Matter / Mater.ia) or personal value.
   credentials/installs needed. Assume zero prior context.
 
 ## After anything is finished
-Add one row to the master log — the Google Drive doc **"The Foundry"** inside the
-top-level **"The Foundry"** folder (update it, never duplicate it). One entry per
-finished link:
+Add one row to the master log — the **Notion** database **"The Foundry — Master Log"**
+(data source id `2b613500-0ac7-4350-af2d-2bfa55660fff`,
+url https://www.notion.so/2a00168944af43e2851291e9b7755188).
+Use the Notion `create-pages` tool with that `data_source_id`. One row per finished
+link, with these columns:
 
-| Date | Link | What it is | Lane(s) | Verdict | Where it landed | Dependencies |
+  Item · Date · Link · What it is · Bucket · Lane(s) · Verdict · Where it landed · Dependencies
 
-Both you and the founder write to this doc — it is the single source of truth.
+Claude (any session) and the founder both write to this database — it is the single
+source of truth. Never start a second log.
