@@ -73,6 +73,58 @@ Tie the framing to business (Gray Matter / Mater.ia) or personal value.
   every sub-link, what to build, the exact steps, the test command, and any
   credentials/installs needed. Assume zero prior context.
 
+## Pre-install safety gate (runs before ANY install)
+Before installing or running **any third-party code** — a package (`pip install`,
+`brew install`, `npm install`, …), an MCP server, a skill from a link, or a repo
+you'd clone and run — STOP and run a deep safety scan first. This does NOT apply to
+local scripts the Foundry writes itself; but any third-party dependency those need
+must pass through this gate.
+
+**Deep scan (use WebSearch / WebFetch + the registry page):**
+- What it is and what it does.
+- Source: the official registry (PyPI / npm / Homebrew) AND the real source repo —
+  is the publisher verifiable?
+- Adoption: downloads/month, GitHub stars.
+- Maintenance: last release + last commit date, number of maintainers.
+- Dependencies it pulls in (the transitive tree — flag anything obscure).
+- Known security advisories / CVEs.
+- Red flags: typosquatting (name close to a popular package), brand-new package,
+  no public source, obfuscated/minified code, install-time scripts that make
+  network calls or need elevated access.
+
+**Safety Score — 0 to 100, higher = safer.** Start at 100 and deduct:
+- Unverifiable/unofficial source, or no public source repo — large.
+- Known CVE / active advisory — large.
+- Typosquatting resemblance — large.
+- Abandoned (~12+ months no commits) — medium.
+- Very new (< ~3 months) or very low adoption — medium.
+- Large/obscure dependency tree, or install-time network/elevated access — medium.
+- Single unknown maintainer, or missing license — minor.
+
+**Recommendation — based on SAFETY ONLY (Claude decides this):**
+- 85–100 → INSTALL (no meaningful safety concern)
+- 60–84 → INSTALL WITH CAUTION (name the specific concerns)
+- 0–59 → DON'T INSTALL (safety risk)
+
+Then print this report and stop for the founder's decision:
+
+```
+PRE-INSTALL SAFETY CHECK — <name>
+What it is:     ...
+Source:         ... (official? source repo? publisher verified?)
+Adoption:       ~N downloads/mo · N stars
+Maintenance:    last release ..., last commit ..., N maintainers
+Pulls in:       ...
+Advisories:     none / CVE-...
+Red flags:      none / ...
+SAFETY SCORE:   NN/100
+RECOMMENDATION (safety only): INSTALL / INSTALL WITH CAUTION / DON'T INSTALL — <one line>
+Your call (usefulness): install? (y/n)
+```
+
+**The split is firm: Claude rates SAFETY; the founder decides USEFULNESS.** Never
+install on a DON'T-INSTALL safety verdict unless the founder explicitly overrides.
+
 ## After anything is finished
 Add one row to the master log — the **Notion** database **"The Foundry — Master Log"**
 (data source id `2b613500-0ac7-4350-af2d-2bfa55660fff`,
