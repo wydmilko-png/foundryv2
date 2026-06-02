@@ -1,0 +1,4 @@
+# Drop real product photos here (jpg/png/webp) to use them as image references.
+# Example: can-front.jpg, lifestyle.jpg
+# With photos present, the image model uses them so the product looks exactly right.
+# With none, it generates from the description only.

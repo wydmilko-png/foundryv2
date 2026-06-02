@@ -4,3 +4,7 @@ __pycache__/
 .DS_Store
 .venv/
 venv/
+
+# carousel tool — never commit keys or generated decks
+projects/*/.env
+projects/*/output/
