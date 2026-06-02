@@ -1,0 +1,4 @@
+# Foundry dependencies
+# fetch_x.py uses only the Python standard library (urllib) — no entry needed.
+# fetch_youtube.py needs this one library:
+youtube-transcript-api>=1.2,<2
